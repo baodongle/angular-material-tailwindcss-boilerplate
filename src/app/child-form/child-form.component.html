@@ -1,0 +1,14 @@
+<section [formGroup]="formGroup">
+  <div
+    *ngFor="let field of formFields; index as i"
+    [fxLayout]="field.config?.fxLayout ? field.config?.fxLayout : 'column'"
+    fxLayoutAlign="start start"
+  >
+    <ng-container *ngIf="!field.config || !field.config.type">
+      <label [for]="'' + field.formControlName" *ngIf="field.config?.label">{{ field.config?.label }}</label>
+      <mat-form-field appearance="outline">
+        <input matInput [id]="'' + field.formControlName" [formControlName]="field.formControlName" />
+      </mat-form-field>
+    </ng-container>
+  </div>
+</section>
